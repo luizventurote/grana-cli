@@ -6,9 +6,9 @@ import {
 } from '../models/wallet.js';
 import { getAdapter } from '../config/db.js';
 
-export function addWallet({ name }) {
+export function addWallet({ name, profileId }) {
   const db = getAdapter();
-  createWallet(db, { name });
+  createWallet(db, { name, profileId });
 }
 
 export function getWallets() {

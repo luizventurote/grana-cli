@@ -1,5 +1,5 @@
-export function createWallet(db, { name, balance = 0 }) {
-  db.insertWallet({ name, balance });
+export function createWallet(db, { name, balance = 0, profileId }) {
+  db.insertWallet({ name, balance, profileId });
 }
 
 export function listWallets(db) {

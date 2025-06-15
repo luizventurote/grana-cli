@@ -16,9 +16,11 @@ describe('SQLiteAdapter wallets', () => {
   });
 
   it('inserts and retrieves wallet', () => {
-    db.insertWallet({ name: 'Test' });
+    const profileId = db.getProfiles()[0].id;
+    db.insertWallet({ name: 'Test', profileId });
     const wallets = db.getWallets();
     expect(wallets.length).toBe(1);
     expect(wallets[0].name).toBe('Test');
+    expect(wallets[0].profile_id).toBe(profileId);
   });
 });

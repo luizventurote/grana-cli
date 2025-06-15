@@ -23,7 +23,8 @@ export function setupCommands(program) {
   program
     .command('wallet:add <name>')
     .description('Add a new wallet')
-    .action((name) => addWalletCommand({ name }));
+    .option('-p, --profile <profile>', 'Profile id')
+    .action((name, options) => addWalletCommand({ name, profile: options.profile }));
 
   program
     .command('wallet:list')
