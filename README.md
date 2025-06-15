@@ -57,6 +57,7 @@ node src/index.js pay
 
 - `receive`/`add` - Record income
 - `pay` - Record expense
+- `transactions` - List transactions
 
 ### Profiles
 
