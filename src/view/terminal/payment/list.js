@@ -1,4 +1,5 @@
 import { getPayments } from '../../../controllers/payment-controller.js';
+import { renderTable } from '../ui.js';
 
 export function listPaymentCommand() {
   const payments = getPayments();
@@ -6,7 +7,12 @@ export function listPaymentCommand() {
     console.log('No payments found.');
     return;
   }
-  payments.forEach(p =>
-    console.log(`${p.id}: ${p.client} - ${p.amount} - ${p.status}`)
-  );
+  const headers = ['ID', 'Client', 'Amount', 'Status'];
+  const rows = payments.map(p => [
+    String(p.id),
+    p.client,
+    String(p.amount),
+    p.status
+  ]);
+  console.log(renderTable(headers, rows));
 }
