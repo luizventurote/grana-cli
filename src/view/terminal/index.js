@@ -5,6 +5,7 @@ import { adjustBalanceCommand } from './wallet/adjust.js';
 import { walletBalanceCommand } from './wallet/balance.js';
 import { receiveCommand } from './transaction/receive.js';
 import { payCommand } from './transaction/pay.js';
+import { listTransactionsCommand } from './transaction/list.js';
 import { addProfileCommand } from './profile/add.js';
 import { listProfileCommand } from './profile/list.js';
 import { useProfileCommand } from './profile/use.js';
@@ -49,6 +50,11 @@ export function setupCommands(program) {
     .option('-d, --description <description>', 'Description')
     .option('--date <date>', 'Date in YYYY-MM-DD')
     .action(payCommand);
+
+  program
+    .command('transactions')
+    .description('List transactions')
+    .action(() => listTransactionsCommand());
 
   program
     .command('wallet:set-balance <wallet> <balance>')
