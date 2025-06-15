@@ -1,9 +1,10 @@
-import { initLip, Lipgloss } from 'charsm';
-
+// "charsm" does not support all platforms (e.g. macOS). We load it
+// dynamically so the CLI can still run where the module is unavailable.
 export let lip;
 
 export async function initCliUI() {
   try {
+    const { initLip, Lipgloss } = await import('charsm');
     const ok = await initLip();
     if (ok) {
       lip = new Lipgloss();
