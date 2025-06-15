@@ -1,4 +1,5 @@
 import { getPayments } from '../../../controllers/payment-controller.js';
+import { renderTable } from '../ui.js';
 
 export function pendingPaymentsCommand() {
   const payments = getPayments({ status: 'Pending' });
@@ -6,7 +7,12 @@ export function pendingPaymentsCommand() {
     console.log('No pending payments.');
     return;
   }
-  payments.forEach(p =>
-    console.log(`${p.id}: ${p.client} - ${p.amount} - due ${p.due_date}`)
-  );
+  const headers = ['ID', 'Client', 'Amount', 'Due'];
+  const rows = payments.map(p => [
+    String(p.id),
+    p.client,
+    String(p.amount),
+    p.due_date
+  ]);
+  console.log(renderTable(headers, rows));
 }

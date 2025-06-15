@@ -1,5 +1,5 @@
 import { getWallets } from '../../../controllers/wallet-controller.js';
-import chalk from 'chalk';
+import { renderTable } from '../ui.js';
 
 export function walletBalanceCommand() {
   const wallets = getWallets();
@@ -7,7 +7,7 @@ export function walletBalanceCommand() {
     console.log('No wallets found.');
     return;
   }
-  wallets.forEach(w => {
-    console.log(`${w.id}: ${chalk.green(w.name)} - Balance: ${w.balance}`);
-  });
+  const headers = ['ID', 'Name', 'Balance'];
+  const rows = wallets.map(w => [String(w.id), w.name, String(w.balance)]);
+  console.log(renderTable(headers, rows));
 }

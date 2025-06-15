@@ -1,4 +1,5 @@
 import { getProfiles } from '../../../controllers/profile-controller.js';
+import { renderTable } from '../ui.js';
 
 export function listProfileCommand() {
   const profiles = getProfiles();
@@ -6,5 +7,7 @@ export function listProfileCommand() {
     console.log('No profiles found.');
     return;
   }
-  profiles.forEach(p => console.log(`${p.id}: ${p.name}`));
+  const headers = ['ID', 'Name'];
+  const rows = profiles.map(p => [String(p.id), p.name]);
+  console.log(renderTable(headers, rows));
 }
