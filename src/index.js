@@ -10,6 +10,9 @@ program
 
 setupCommands(program);
 
-await initCliUI();
+const uiOk = await initCliUI();
+if (!uiOk) {
+  console.log('(UI color disabled)');
+}
 
 program.parseAsync(process.argv);
