@@ -20,6 +20,9 @@ Add a wallet:
 
 ```bash
 node src/index.js wallet:add MyWallet
+
+# specify profile (optional if a current profile is set)
+node src/index.js wallet:add MyWallet --profile 1
 ```
 
 List wallets:
@@ -44,7 +47,7 @@ node src/index.js pay
 
 ### Wallets
 
-- `wallet:add <name>` - Add a wallet
+- `wallet:add <name>` - Add a wallet to the current profile (use `--profile` to specify)
 - `wallet:list` - List wallets
 - `wallet:set-balance <wallet> <balance>` - Set wallet balance
 - `wallet:adjust <wallet> <amount>` - Adjust wallet balance

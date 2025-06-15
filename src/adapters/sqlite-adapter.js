@@ -13,7 +13,9 @@ export class SQLiteAdapter extends DBAdapter {
       CREATE TABLE IF NOT EXISTS wallets (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
-        balance REAL DEFAULT 0
+        balance REAL DEFAULT 0,
+        profile_id INTEGER NOT NULL,
+        FOREIGN KEY (profile_id) REFERENCES profiles(id)
       );
       CREATE TABLE IF NOT EXISTS transactions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,15 +47,31 @@ export class SQLiteAdapter extends DBAdapter {
         value TEXT
       );
     `);
+
+    const profileCount = this.db.prepare(
+      'SELECT COUNT(*) as count FROM profiles'
+    ).get().count;
+    if (profileCount === 0) {
+      const info = this.db
+        .prepare('INSERT INTO profiles (name) VALUES (?)')
+        .run('Personal');
+      this.db
+        .prepare(
+          "INSERT INTO config (key, value) VALUES ('currentProfile', ?) ON CONFLICT(key) DO UPDATE SET value=excluded.value"
+        )
+        .run(String(info.lastInsertRowid));
+    }
   }
 
   getWallets() {
     return this.db.prepare('SELECT * FROM wallets').all();
   }
 
-  insertWallet({ name, balance = 0 }) {
-    const stmt = this.db.prepare('INSERT INTO wallets (name, balance) VALUES (?, ?)');
-    stmt.run(name, balance);
+  insertWallet({ name, balance = 0, profileId }) {
+    const stmt = this.db.prepare(
+      'INSERT INTO wallets (name, balance, profile_id) VALUES (?, ?, ?)'
+    );
+    stmt.run(name, balance, profileId);
   }
 
   insertTransaction({ walletId, type, amount, description = '', date }) {
