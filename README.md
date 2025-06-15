@@ -43,6 +43,24 @@ Record expense interactively:
 node src/index.js pay
 ```
 
+List transactions:
+
+```bash
+node src/index.js transactions
+```
+
+This command renders a colored table using [Lipgloss](https://github.com/charmbracelet/lipgloss) via the `charsm` library:
+
+```
+╭──┬────────────┬────┬──────┬───────────┬──────────╮
+│ID│Wallet      │Type│Amount│Description│Date      │
+├──┼────────────┼────┼──────┼───────────┼──────────┤
+│1 │SampleWallet│IN  │100   │Salary     │2024-01-01│
+│2 │SampleWallet│OUT │50    │Groceries  │2024-01-02│
+╰──┴────────────┴────┴──────┴───────────┴──────────╯
+```
+
+If `charsm` fails to initialize (for example on macOS), the CLI prints a plain tab-separated table instead.
 ## Commands
 
 ### Wallets
