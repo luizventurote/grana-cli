@@ -1,4 +1,4 @@
-import { getPayments } from '../../controllers/payment-controller.js';
+import { getPayments } from '../../../controllers/payment-controller.js';
 
 export function pendingPaymentsCommand() {
   const payments = getPayments({ status: 'Pending' });

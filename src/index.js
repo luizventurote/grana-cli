@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import { setupCommands } from './commands/index.js';
+import { setupCommands } from './view/terminal/index.js';
 
 program
   .name('grana')

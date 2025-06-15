@@ -1,4 +1,4 @@
-import { addCategory } from '../../controllers/category-controller.js';
+import { addCategory } from '../../../controllers/category-controller.js';
 
 export function addCategoryCommand({ name }) {
   addCategory({ name });

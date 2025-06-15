@@ -1,4 +1,4 @@
-import { getWallets } from '../../controllers/wallet-controller.js';
+import { getWallets } from '../../../controllers/wallet-controller.js';
 import chalk from 'chalk';
 
 export function walletBalanceCommand() {

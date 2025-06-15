@@ -1,4 +1,4 @@
-import { currentProfile } from '../../controllers/profile-controller.js';
+import { currentProfile } from '../../../controllers/profile-controller.js';
 
 export function currentProfileCommand() {
   const profile = currentProfile();

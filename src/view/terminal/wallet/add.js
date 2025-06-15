@@ -1,5 +1,5 @@
-import { addWallet } from '../../controllers/wallet-controller.js';
-import { currentProfile } from '../../controllers/profile-controller.js';
+import { addWallet } from '../../../controllers/wallet-controller.js';
+import { currentProfile } from '../../../controllers/profile-controller.js';
 
 export function addWalletCommand({ name, profile }) {
   let profileId = profile;

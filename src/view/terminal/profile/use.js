@@ -1,4 +1,4 @@
-import { useProfile } from '../../controllers/profile-controller.js';
+import { useProfile } from '../../../controllers/profile-controller.js';
 
 export function useProfileCommand({ profile }) {
   useProfile({ profileId: profile });
