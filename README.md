@@ -1,6 +1,6 @@
 # Grana CLI
 
-Grana CLI is a command-line financial manager built with Node.js. It follows a layered MVC architecture and uses SQLite through a database adapter.
+Grana CLI is a command-line financial manager built with Node.js. It follows a layered MVC architecture and uses SQLite through a database adapter. CLI commands now live under `src/view/terminal` while the application logic resides in `src/controllers` and `src/models`.
 
 ## Install
 

@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
-import { parseDate } from '../../core/date.js';
-import { getWallets } from '../../controllers/wallet-controller.js';
-import { payExpense } from '../../controllers/transaction-controller.js';
+import { parseDate } from '../../../core/date.js';
+import { getWallets } from '../../../controllers/wallet-controller.js';
+import { payExpense } from '../../../controllers/transaction-controller.js';
 
 export async function payCommand(options) {
   const wallets = getWallets();

@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { getWallets } from '../../controllers/wallet-controller.js';
+import { getWallets } from '../../../controllers/wallet-controller.js';
 
 export function listWalletCommand() {
   const wallets = getWallets();

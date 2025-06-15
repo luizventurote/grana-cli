@@ -1,4 +1,4 @@
-import { getProfiles } from '../../controllers/profile-controller.js';
+import { getProfiles } from '../../../controllers/profile-controller.js';
 
 export function listProfileCommand() {
   const profiles = getProfiles();

@@ -1,4 +1,4 @@
-import { getCategories } from '../../controllers/category-controller.js';
+import { getCategories } from '../../../controllers/category-controller.js';
 
 export function listCategoryCommand() {
   const categories = getCategories();

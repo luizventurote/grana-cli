@@ -1,4 +1,4 @@
-import { markPaid } from '../../controllers/payment-controller.js';
+import { markPaid } from '../../../controllers/payment-controller.js';
 
 export function markPaidCommand({ payment }) {
   markPaid({ paymentId: payment });
